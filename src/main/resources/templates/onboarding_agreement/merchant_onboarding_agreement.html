@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8" />
+    <style>
+        * {
+            box-sizing: border-box;
+            -moz-box-sizing: border-box;
+        }
+
+        @page {
+            size: A4;
+            margin: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            height: 100%;
+            margin: 0 auto;
+            padding: 0;
+        }
+
+        .main {
+            padding: 4mm;
+            padding-top: 0mm;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        .page-before {
+            page-break-before: always;
+        }
+
+        table,
+        th,
+        td {
+            border: 1px solid;
+            border-collapse: collapse;
+            border-color: orange;
+        }
+
+        table {
+            width: 100%;
+        }
+
+        th,
+        td {
+            text-align: left;
+        }
+
+        th {
+            height: 40px;
+            padding: 14px;
+            padding-left: 12px;
+        }
+
+        td {
+            height: 40px;
+            padding-left: 12px;
+            padding-top: 12px;
+            padding-bottom: 12px;
+        }
+
+        ul {
+            display: flex;
+            flex-direction: row;
+            text-decoration: none;
+            justify-content: space-between;
+            list-style-type: none;
+        }
+
+        tr td:nth-child(1) {
+            width: 300px;
+        }
+
+        .mt40 {
+            margin-top: 16px;
+        }
+
+        .title{
+            padding: 4px;
+        }
+    </style>
+</head>
+
+<body>
+<div class="main">
+    <div class="text-center"><span th:text="${bankName}"></span></div>
+    <br />
+    <table class="mt40" style="border: 0;">
+        <tr style="border: 0;">
+            <td style="font-weight: 600; font-size: 24px;width: 80%; border: 0px;">
+                Merchant Service Agreement
+            </td>
+            <td style="border: 0;margin-bottom: 24px;">
+                <img src="https://paymentassets.s3.ap-south-1.amazonaws.com/logos/image_90507231641151426849776.png" width="200px" height="140px"/>
+            </td>
+        </tr>
+    </table>
+    <table class="mt40">
+        <tr style="background-color: darkgray;">
+            <th>Particulars</th>
+            <th>Merchant Response</th>
+        </tr>
+        <tr>
+            <td>
+                Name of the Entity (Legal Name) <span style="color: red;">*</span>
+            </td>
+            <td th:text="${legalName}"></td>
+        </tr>
+        <tr>
+            <td>
+                Name of the Store/Shop (Trade Name) <span style="color: red;">*</span>
+            </td>
+            <td th:text="${shopName}"></td>
+        </tr>
+        <tr>
+            <td>
+                Address <span style="color: red;">*</span>
+            </td>
+            <td th:text="${address}"></td>
+        </tr>
+        <tr>
+            <td>Contact Detail <span style="color: red;">*</span></td>
+            <td>
+                <div class="title">Name: &nbsp;<span th:text="${gstName}"></span></div>
+                <div class="title">Mobile: &nbsp;<span th:text="${gstMobile}"></span></div>
+                <div class="title">Email: &nbsp;<span th:text="${gstEmail}"></span></div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Company Identification <span style="color: red;">*</span> </td>
+            <td>
+                <div class="title">GSTIN: &nbsp;<span th:text="${gst}"></span></div>
+                <div class="title">PAN: &nbsp;<span th:text="${pan}"></span></div>
+                <div class="title">Date of Business Registration: &nbsp;<span th:text="${registrationDate}"></span></div>
+            </td>
+        </tr>
+        <tr>
+            <td>Entity Type <span style="color: red;">*</span></td>
+            <td>
+                <div class="title"><span th:text="${entityType}"></span></div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Bank Account Details <span style="color: red;">*</span>
+            </td>
+            <td>
+                <div class="title">Holder Name: &nbsp;<span th:text="${accountHolderName}"></span></div>
+                <div class="title">Account Number: &nbsp;<span th:text="${accountNumber}"></span></div>
+                <div class="title">IFSC Code: &nbsp;<span th:text="${ifscCode}"></span></div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Product / Services Offered <span style="color: red;">*</span>
+            </td>
+            <td>
+                <div class="title"><span th:text="${category}"></span></div>
+            </td>
+        </tr>
+    </table>
+    <div style="padding-top: 60px;">
+        <div style="line-height: 28px">I <span style="border-bottom: 2px solid;font-weight: 600;padding-bottom: 4px" th:text="${consent}"></span> of <span style="padding-bottom: 4px;border-bottom: 2px solid;font-weight: 600" th:text="${shopName}"></span> hereby accept that all the information shared above are correct and
+            hereby accept the term and conditions [<a style="color: blue;" th:href="${merchantServiceAggrement}" target="_blank" th:text="${merchantServiceAggrement}"></a>]
+        </div>
+        <div style="padding-top: 18px;">
+            <div style="font-weight: 600;">Date: <span th:text="${date}"></span></div>
+            <div style="font-weight: 600;padding-top: 8px;">Place: <span th:text="${city}"></span></div>
+        </div>
+    </div>
+</div>
+</body>
+
+</html>

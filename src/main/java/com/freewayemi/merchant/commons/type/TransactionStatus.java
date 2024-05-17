@@ -1,0 +1,36 @@
+package com.freewayemi.merchant.commons.type;
+
+public enum TransactionStatus {
+    initiated,
+    loaded,
+    processing,
+    success,
+    failed,
+    cancelled,
+    expired,
+    fundsTransferRequiredByMerchant,
+    fundsTransferredByMerchant,
+    verifyingFundReceived,
+    fundsReceivedFromMerchant,
+    fundReceivedDetailNotMatching,
+    refundCancelled,
+    toBeSentToBank,
+    filePrepared,
+    sentToBank,
+    bankAccepted,
+    refundRequested,
+    fundsReturned,
+    forceCompleted,
+    pending_with_bank,
+    reversed,
+    open,
+    lost,
+    underReview,
+    won,
+    closed,
+    pendingWithMerchant,
+    underpaymentReview,
+    merchantWon,
+    merchantLost;
+
+}

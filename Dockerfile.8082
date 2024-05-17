@@ -1,0 +1,18 @@
+FROM openjdk:12
+
+RUN mkdir -p /var/log/payment
+RUN yum -y install unzip
+#RUN curl https://download.newrelic.com/newrelic/java-agent/newrelic-agent/current/newrelic-java.zip -O \
+#&& unzip newrelic-java.zip -d /app \
+#&& rm newrelic-java.zip
+
+ADD build/libs/merchant-1.0.jar merchant-1.0.jar
+
+EXPOSE 8082
+
+#ENV NEW_RELIC_APP_NAME="uat-merchantms"
+#ENV NEW_RELIC_LICENSE_KEY="80449f807ed70cdb89063f24918612927d39NRAL"
+#ENV NEW_RELIC_LOG_FILE_NAME="STDOUT"
+
+
+ENTRYPOINT ["java","-jar","-Djdk.tls.client.protocols=TLSv1.2","-Dserver.port=8082","merchant-1.0.jar"]

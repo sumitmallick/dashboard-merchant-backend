@@ -1,0 +1,10 @@
+import com.freewayemi.merchant.commons.bo.brms.Input;
+global com.freewayemi.merchant.commons.bo.brms.Output output;
+dialect  "mvel"
+
+rule "Calculate Offer Discount - Scenario 1"
+    when
+        input:Input(cardType == 'DEBIT' && bankCode == 'HDFC');
+    then
+        output.setDiscount(10);
+end

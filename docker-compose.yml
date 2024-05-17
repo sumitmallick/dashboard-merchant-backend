@@ -1,0 +1,25 @@
+version: '3'
+
+services:
+
+  merchant:
+    build:
+      context: .
+      dockerfile: Dockerfile.8082
+    image: merchant
+    container_name: merchant_8082
+    ports:
+      - "8082:8082"
+    volumes:
+      - /var/log/payment:/var/log/payment
+    networks:
+      - payment_network
+      - payment_backend_network
+
+networks:
+  payment_network:
+    external:
+      name: payment_network
+  payment_backend_network:
+    external: true
+    driver: overlay
